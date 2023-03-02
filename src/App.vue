@@ -30,9 +30,26 @@ export default {
 <template>
   <h1>My Books</h1>
   <ul>
-    <book-info></book-info>
-    <book-info></book-info>
-    <book-info></book-info>
+    <book-info 
+    id="1"
+    title="Narnia I"
+    author="C.S Lewis"
+    release-date="1979-12-02"
+    is-liked="1">
+      
+    </book-info>
+    <book-info
+    id="1"
+    title="Narnia II"
+    author="C.S Lewis"
+    release-date="1989-12-02"
+    is-liked="0"></book-info>
+    <book-info
+    id="1"
+    title="Narnia III"
+    author="C.S Lewis"
+    release-date="1999-12-02"
+    is-liked="1"></book-info>
   </ul>
 </template>
 <style>

@@ -1,21 +1,52 @@
 <script>
 export default {
+ // props: ["id", "title","author","releaseDate","isLiked"],
+ //objeto valida props
+ props:{
+  id:{
+    type:String,
+    required:true,
+  },
+  title:{
+    type:String,
+    required:true,
+  },
+  author:{
+    type:String,
+    required:true,
+  },
+  releaseDate:{
+    type:String,
+    required:true,
+  },
+  isLiked:{
+    type:String,
+    required:false,
+    default:"0",
+    validator: function(value){
+      return value === "1"|| value ==="0"
+    }
+  },
+ },
+
   data() {
     return {
       detailAreVisible: false,
-      books: 
-        {
-          id: 1,
-          title: "Narnia",
-          author: "C.S Lewis",
-          releaseDate: "1999-12-02",
-        },
-      
+      bookIsLiked:this.isLiked,
+     
     };
   },
   methods: {
-    togleDetails() {
+    toggleDetails() {
       this.detailAreVisible = !this.detailAreVisible;
+    },
+    toggleFavorite(){
+      if ( this.bookIsLiked==="1") {
+        this.bookIsLiked="0"
+      } else {
+        this.bookIsLiked="1"
+      }
+
     },
   },
 };
@@ -23,13 +54,16 @@ export default {
 
 <template>
   <li>
-    <h2>{{ books.title }}</h2>
-    <button type="button" @click="togleDetails">
+    <h2>{{ title }} {{ bookIsLiked==="1" ? "(Liked)" : "(Not Liked)"}}</h2>
+    <button type="button" @click="toggleDetails">
       {{ detailAreVisible ? "Hide" : "Show" }}
     </button>
+    <button type="button" @click="toggleFavorite">
+Toggle Favorite
+    </button>
     <ul v-if="detailAreVisible">
-      <li><strong>Autor: </strong> {{ books.author }}</li>
-      <li><strong>Release Date: </strong>{{ books.releaseDate }}</li>
+      <li><strong>Autor: </strong> {{ author }}</li>
+      <li><strong>Release Date: </strong>{{ releaseDate }}</li>
     </ul>
   </li>
 </template>

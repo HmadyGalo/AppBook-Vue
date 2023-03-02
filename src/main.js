@@ -5,4 +5,4 @@ import "./assets/main.css";
 
 const app = createApp(App);
 app.component("book-info", BookInfo);
-app.mount("#app")
+app.mount("#app");
